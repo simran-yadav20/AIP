@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add User</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: url('https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:first-of-type {
+      background-color: #2ed573;
+    }
+
+    button:first-of-type:hover {
+      background-color: #20bf6b;
+    }
+
+    button:last-of-type {
+      background-color: #576574;
+    }
+
+    button:last-of-type:hover {
+      background-color: #2f3640;
+    }
+
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 1.5rem 1rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      input,
+      button {
+        font-size: 0.95rem;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Add New User</h2>
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="text" id="fatherName" placeholder="Father's Name" required>
+    <input type="date" id="dob" required>
+    <input type="tel" id="phone" placeholder="Phone Number" required>
+    <input type="email" id="email" placeholder="Email Address" required>
+    <input type="text" id="profession" placeholder="Profession" required>
+    <button onclick="addUser()">Add User</button>
+    <button onclick="location.href='index.html'">Back</button>
+  </div>
+
+  <script>
+    function isValidEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
+    }
+
+    function isValidPhone(phone) {
+      const regex = /^[0-9]{10}$/;
+      return regex.test(phone);
+    }
+
+    async function addUser() {
+      const name = document.getElementById("name").value.trim();
+      const fatherName = document.getElementById("fatherName").value.trim();
+      const dob = document.getElementById("dob").value;
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const profession = document.getElementById("profession").value.trim();
+
+      if (!name || !fatherName || !dob || !phone || !email || !profession) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      if (!isValidPhone(phone)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+
+      await fetch("/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, fatherName, dob, phone, email, profession })
+      });
+
+      alert("User added successfully!");
+      location.href = "view.html";
+    }
+  </script>
+</body>
+</html>

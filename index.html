@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Info System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: url('https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      line-height: 1.4;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 0.85rem;
+      background-color: #4e6ef2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #3b54c0;
+    }
+
+    .btn i {
+      font-style: normal; /* prevent italic */
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .container {
+        padding: 1.5rem 1rem;
+      }
+
+      .btn {
+        font-size: 0.95rem;
+        padding: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>User Information <br>Management System</h1>
+    <a class="btn" href="add.html"><i>➕</i> Add User</a>
+    <a class="btn" href="view.html"><i>📄</i> View Users</a>
+  </div>
+</body>
+</html>
