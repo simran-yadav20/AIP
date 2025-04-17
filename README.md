@@ -19,7 +19,7 @@
 
    ![image](https://github.com/user-attachments/assets/d18a39e4-f8ea-45db-ac6a-11c7cdac46a3)
 
-**   5. Output:**
+**5. Output:**
 
 ![image](https://github.com/user-attachments/assets/e8310c85-1f0a-4200-a271-3c1dbf0e348a)
 ![image](https://github.com/user-attachments/assets/f29dd499-94c0-48fc-8240-bb65874a7011)
